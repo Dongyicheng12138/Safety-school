@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>米其林安全学校 · Safety School</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 4 8v8c0 8 5 12 12 13 7-1 12-5 12-13V8L16 3z' fill='%2327509B'/%3E%3Cpath d='M11 16l4 4 7-8' stroke='%23fff' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --michelin-blue:#27509B;
+    --safe-green:#4a9b6e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;width:100%;overflow:hidden;background:#0f1a14;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;}
+
+  .phone{position:relative;width:100%;height:100%;height:100dvh;overflow:hidden;}
+  @media (min-width:600px){
+    body{display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(120% 120% at 50% 0%,#1a2a20 0%,#0a120d 100%);}
+    .phone{max-width:430px;max-height:920px;height:94vh;border-radius:22px;
+      box-shadow:0 30px 80px rgba(0,0,0,.55);}
+  }
+
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease;will-change:opacity;}
+  .slide.active{opacity:1;}
+  .slide::before{content:"";position:absolute;inset:-24px;
+    background-image:inherit;background-size:cover;background-position:center;
+    filter:blur(28px) brightness(.5) saturate(1.1);}
+  .slide img{position:relative;width:100%;height:100%;object-fit:contain;display:block;}
+  .veil{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,22,15,.55) 0%,rgba(10,22,15,0) 26%,rgba(10,22,15,0) 50%,rgba(7,15,10,.85) 100%);}
+
+  .top{position:absolute;top:0;left:0;right:0;padding:26px 22px 0;z-index:5;}
+  .brand{display:flex;align-items:center;gap:8px;color:#fff;margin-bottom:6px;}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--safe-green);
+    box-shadow:0 0 0 4px rgba(74,155,110,.25);}
+  .brand small{font-size:12px;letter-spacing:.32em;font-weight:600;opacity:.9;}
+  h1{color:#fff;font-size:25px;font-weight:700;letter-spacing:.06em;
+    text-shadow:0 2px 18px rgba(0,0,0,.5);line-height:1.25;}
+  h1 span{display:block;font-size:11px;font-weight:400;letter-spacing:.34em;
+    opacity:.85;margin-top:4px;}
+
+  .bottom{position:absolute;left:0;right:0;bottom:0;padding:0 22px 30px;z-index:5;}
+  .tag{display:inline-block;padding:5px 13px;border-radius:999px;
+    background:rgba(255,255,255,.14);backdrop-filter:blur(8px);
+    color:#fff;font-size:12px;letter-spacing:.12em;margin-bottom:14px;}
+  .subtitle{min-height:110px;display:flex;align-items:flex-end;}
+  .subtitle p{color:#fff;font-size:17px;line-height:1.65;font-weight:500;
+    text-shadow:0 2px 12px rgba(0,0,0,.65);
+    opacity:0;transform:translateY(8px);transition:opacity .7s ease,transform .7s ease;}
+  .subtitle p.show{opacity:1;transform:translateY(0);}
+  .dots{display:flex;gap:7px;margin-top:16px;}
+  .dots i{width:20px;height:3px;border-radius:2px;background:rgba(255,255,255,.35);
+    transition:background .4s;}
+  .dots i.on{background:var(--safe-green);}
+
+  .gate{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:22px;
+    background:radial-gradient(90% 70% at 50% 45%,rgba(20,40,28,.55),rgba(8,16,11,.88));
+    backdrop-filter:blur(2px);transition:opacity .6s,visibility .6s;}
+  .gate.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .play{width:84px;height:84px;border-radius:50%;border:none;cursor:pointer;
+    background:#fff;color:var(--michelin-blue);display:flex;align-items:center;
+    justify-content:center;box-shadow:0 12px 40px rgba(0,0,0,.35);
+    animation:pulse 2s ease-in-out infinite;}
+  .play svg{width:30px;height:30px;margin-left:4px;}
+  @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4);}
+    50%{transform:scale(1.05);box-shadow:0 0 0 18px rgba(255,255,255,0);}}
+  .gate p{color:#fff;font-size:15px;letter-spacing:.18em;}
+
+  .mute{position:absolute;top:22px;right:20px;z-index:6;width:42px;height:42px;
+    border-radius:50%;border:1px solid rgba(255,255,255,.4);
+    background:rgba(0,0,0,.22);color:#fff;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+  .mute svg{width:20px;height:20px;}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <div class="slide active" style="background-image:url('https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/DpZWbHCpeoUkVrxlTpBcfn5Qn6f')">
+    <img src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/DpZWbHCpeoUkVrxlTpBcfn5Qn6f" alt="学生安全体验课程">
+  </div>
+  <div class="slide" style="background-image:url('https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/LbCIbYHWro935kxTiG0cFjCqnHg')">
+    <img src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/LbCIbYHWro935kxTiG0cFjCqnHg" alt="叉车安全体验">
+  </div>
+  <div class="slide" style="background-image:url('https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/OvSFbNnjkoqh4dxisCGcJTVhnXc')">
+    <img src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/OvSFbNnjkoqh4dxisCGcJTVhnXc" alt="学生体验叉车模拟驾驶">
+  </div>
+  <div class="slide" style="background-image:url('https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/V7IIbTTLXowNpnxU7gWcjUSanhd')">
+    <img src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/V7IIbTTLXowNpnxU7gWcjUSanhd" alt="安全学校体验教室">
+  </div>
+  <div class="veil"></div>
+
+  <div class="top">
+    <div class="brand"><span class="dot"></span><small>MICHELIN · SWT</small></div>
+    <h1>米其林安全学校<span>Safety School</span></h1>
+  </div>
+
+  <div class="bottom">
+    <span class="tag">以人为本 · 安全先行 · 体验学习</span>
+    <div class="subtitle"><p id="sub"></p></div>
+    <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
+  </div>
+
+  <button class="mute" id="muteBtn" aria-label="声音开关">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+      <path id="wave" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>
+    </svg>
+  </button>
+
+  <div class="gate" id="gate">
+    <button class="play" id="playBtn" aria-label="进入并播放">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <p>轻触开启声音与字幕</p>
+  </div>
+
+  <audio id="voice" loop preload="auto"
+    src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/TvO4bzBM2oxlXrx01vic8Raknkb"></audio>
+</div>
+
+<script>
+(function(){
+  var slides=document.querySelectorAll('.slide');
+  var dots=document.querySelectorAll('.dots i');
+  var idx=0;
+  setInterval(function(){
+    slides[idx].classList.remove('active');
+    dots[idx].classList.remove('on');
+    idx=(idx+1)%slides.length;
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('on');
+  },6000);
+
+  var SEG=[
+    {t:0.0, text:"米其林安全学校，是一座安全文化的科普课堂。"},
+    {t:4.5, text:"这里以人为本，安全先行，注重体验。"},
+    {t:7.9, text:"学校开设了丰富多彩的趣味课程，包括 PPE 体验、人机工程搬运体验、叉车盲区体验、挂牌上锁作业体验、夹手点体验等多项安全体验课程，互动感满满。"},
+    {t:21.8,text:"欢迎走进米其林安全学校，在亲身体验中学习安全知识，感受安全文化的魅力。"}
+  ];
+  var sub=document.getElementById('sub');
+  var curSeg=-1;
+  function renderSeg(i){
+    if(i===curSeg) return;
+    curSeg=i;
+    sub.classList.remove('show');
+    setTimeout(function(){
+      sub.textContent=SEG[i].text;
+      sub.classList.add('show');
+    },300);
+  }
+
+  var audio=document.getElementById('voice');
+  var gate=document.getElementById('gate');
+  var playBtn=document.getElementById('playBtn');
+  var muteBtn=document.getElementById('muteBtn');
+  var wave=document.getElementById('wave');
+
+  audio.addEventListener('timeupdate',function(){
+    var t=audio.currentTime;
+    var n=SEG.length-1;
+    for(var i=0;i<SEG.length;i++){
+      if(t>=SEG[i].t) n=i;
+    }
+    renderSeg(n);
+  });
+
+  function startAudio(){
+    audio.play().then(function(){gate.classList.add('hide');})
+      .catch(function(){});
+  }
+  window.addEventListener('load',function(){setTimeout(startAudio,300);});
+  playBtn.addEventListener('click',function(){
+    audio.play();
+    gate.classList.add('hide');
+  });
+  gate.addEventListener('click',function(e){
+    if(e.target===gate){ audio.play(); gate.classList.add('hide'); }
+  });
+
+  muteBtn.addEventListener('click',function(){
+    audio.muted=!audio.muted;
+    wave.style.opacity=audio.muted?0:1;
+    if(!audio.muted){ audio.play(); }
+  });
+})();
+</script>
+</body>
+</html>
